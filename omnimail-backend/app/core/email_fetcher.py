@@ -7,6 +7,6 @@ from email.header import decode_header
 def fetch_emails(username, password, imap_server="imap.gmail.com"):
     mail_conn = imaplib.IMAP4_SSL(imap_server)
     mail_conn.login(username,password)
-
+    mail_conn.select("INBOX")
     
-    return mail_conn.list()
+    return mail_conn.search(None,"all")
