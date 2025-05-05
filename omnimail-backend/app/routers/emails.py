@@ -19,6 +19,6 @@ def get_emails():
 def get_email(email_id:int):
     try:
         return fake_emails[email_id]
-    except IndexError:
-        raise HTTPException(status_code=404,detail=F"Email with id {email_id} not found")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
     
